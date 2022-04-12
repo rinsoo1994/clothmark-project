@@ -1,0 +1,11 @@
+{
+    "routes": {
+        "routesDir": "./server/tsoa"
+    },
+    "basePath": "/api/v1",
+    "entryFile": "./server/index.ts",
+    "middleware": "express",
+    "controllerPathGlobs": [
+        "./server/api/controllers/**/*controller.ts"
+    ]
+}
