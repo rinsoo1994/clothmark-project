@@ -15,8 +15,8 @@ export class ClothMarkController extends BaseController {
         @Request() request: express.Request,
         @Query() user: string
     ): Promise<ShoppingSuccessResponse<ClothMarkViewModel[]>> {
-        const data = await clothService.getClothMarkInfo(request, user);
-        //  구조가 이상하긴 함. list 형태이고싶으면 안쪽에서 만들어주는것? 필요한가? 
+        const data = await clothService.getClothMarksInfo(request, user);
+        console.log(data);
         const shoppingSuccessResponse = new ShoppingSuccessResponse(data);
         return shoppingSuccessResponse;
     }
@@ -26,10 +26,9 @@ export class ClothMarkController extends BaseController {
         @Body() requestBody: ClothMarkRequest,
         @Request() request: express.Request
     ): Promise<ShoppingSuccessResponse<ClothMarkRequest>> {
-        const data = await clothService.putClothMarkInfo(request, requestBody);
+        const data = await clothService.postClothMarkInfo(request, requestBody);
         const shoppingSuccessResponse = new ShoppingSuccessResponse(data);
         return shoppingSuccessResponse;
     }
-
 }
 
