@@ -4,12 +4,18 @@ import express from 'express';
 
 export class ClothService {
 
-    async getClothMarksInfo(expressRequest: express.Request, user: string): Promise<ClothMarkInfo[]> {
+    async getClothMarksInfo(
+        expressRequest: express.Request,
+        user: string
+    ): Promise<ClothMarkInfo[]> {
         const result = await clothData.getClothMarkAllInfo(expressRequest, user);
         return result
     }
 
-    async postClothMarkInfo(expressRequest: express.Request, clothMarkInfo: ClothMarkInfo): Promise<ClothMarkInfo> {
+    async postClothMarkInfo(
+        expressRequest: express.Request,
+        clothMarkInfo: ClothMarkInfo
+    ): Promise<ClothMarkInfo> {
         const result = await clothData.postClothMarkInfo(expressRequest, clothMarkInfo);
         return result
     }

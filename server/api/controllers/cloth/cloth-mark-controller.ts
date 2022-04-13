@@ -22,7 +22,7 @@ export class ClothMarkController extends BaseController {
     }
 
     @Post('info')
-    async putClothMarkInfo(
+    async postClothMarkInfo(
         @Body() requestBody: ClothMarkRequest,
         @Request() request: express.Request
     ): Promise<ShoppingSuccessResponse<ClothMarkRequest>> {

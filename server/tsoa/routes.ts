@@ -12,6 +12,7 @@ const models: TsoaRoute.Models = {
     "ClothMarkViewModel": {
         "dataType": "refObject",
         "properties": {
+            "id": {"dataType":"double","required":true},
             "clothPriority": {"dataType":"double","required":true},
             "clothUrl": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
@@ -34,6 +35,7 @@ const models: TsoaRoute.Models = {
     "ClothMarkRequest": {
         "dataType": "refObject",
         "properties": {
+            "id": {"dataType":"double","required":true},
             "clothUrl": {"dataType":"string","required":true},
             "title": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
@@ -89,7 +91,7 @@ export function RegisterRoutes(app: express.Router) {
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.post('/cloth/info',
 
-            function ClothMarkController_putClothMarkInfo(request: any, response: any, next: any) {
+            function ClothMarkController_postClothMarkInfo(request: any, response: any, next: any) {
             const args = {
                     requestBody: {"in":"body","name":"requestBody","required":true,"ref":"ClothMarkRequest"},
                     request: {"in":"request","name":"request","required":true,"dataType":"object"},
@@ -104,7 +106,7 @@ export function RegisterRoutes(app: express.Router) {
                 const controller = new ClothMarkController();
 
 
-              const promise = controller.putClothMarkInfo.apply(controller, validatedArgs as any);
+              const promise = controller.postClothMarkInfo.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);
