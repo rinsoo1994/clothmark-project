@@ -9,6 +9,17 @@ async function filterUserData(user: string): Promise<ClothMarkInfo[]> {
     return CLOTH_MARK_LIST.filter(clothMarkData => clothMarkData.user == user);
 }
 
+// TODO: 추후 db 로 로직 변경
+async function checkIsExists(info: ClothMarkInfo): Promise<boolean> {
+    // TODO 함수는 async라고 해놓긴 했는데 내부 코드가 그냥 도는 이것같은 경우 의미가 있는가?
+    for (var i in CLOTH_MARK_LIST) {
+        if (CLOTH_MARK_LIST[i].clothUrl === info.clothUrl && CLOTH_MARK_LIST[i].user === info.user) {
+            return true
+        }
+    }
+    return false;
+}
+
 export class ClothData {
     async getClothMarkAllInfo(expressRequest: any, user: string): Promise<ClothMarkInfo[]> {
         try {
@@ -25,8 +36,17 @@ export class ClothData {
 
     async postClothMarkInfo(expressRequest: any, clothMarkInfo: ClothMarkInfo): Promise<ClothMarkInfo> {
         const clothMarkViewModel = new ClothMarkViewModel(clothMarkInfo);
-        CLOTH_MARK_LIST.push(clothMarkViewModel);
-        return clothMarkViewModel
+
+        // 이미 들어있는 url은 ? 
+        if (!await checkIsExists(clothMarkInfo)) {
+            CLOTH_MARK_LIST.push(clothMarkViewModel);
+            return clothMarkViewModel
+        }
+        else {
+            // TODO: 생각보다 모든 케이스에서 동일한 형식의 response를 내려야하는게 어떻게 해야할지 모르겠음? 
+            // 이 케이스는 false를 넣고, 왜 실패했나 메세지를 추가하는게 나을듯!
+            return clothMarkViewModel
+        }
     }
 }
 

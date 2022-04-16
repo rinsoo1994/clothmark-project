@@ -4,7 +4,6 @@ export class ClothMarkCountInfo {
 }
 
 export class ClothMarkInfo {
-    id: number;
     clothUrl: string;
     title: string;
     description: string;

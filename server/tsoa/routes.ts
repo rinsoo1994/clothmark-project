@@ -12,7 +12,6 @@ const models: TsoaRoute.Models = {
     "ClothMarkViewModel": {
         "dataType": "refObject",
         "properties": {
-            "id": {"dataType":"double","required":true},
             "clothPriority": {"dataType":"double","required":true},
             "clothUrl": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
@@ -35,7 +34,6 @@ const models: TsoaRoute.Models = {
     "ClothMarkRequest": {
         "dataType": "refObject",
         "properties": {
-            "id": {"dataType":"double","required":true},
             "clothUrl": {"dataType":"string","required":true},
             "title": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},

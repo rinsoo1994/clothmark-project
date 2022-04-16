@@ -26,6 +26,7 @@ export class ClothMarkController extends BaseController {
         @Body() requestBody: ClothMarkRequest,
         @Request() request: express.Request
     ): Promise<ShoppingSuccessResponse<ClothMarkRequest>> {
+        console.log(requestBody);
         const data = await clothService.postClothMarkInfo(request, requestBody);
         const shoppingSuccessResponse = new ShoppingSuccessResponse(data);
         return shoppingSuccessResponse;
