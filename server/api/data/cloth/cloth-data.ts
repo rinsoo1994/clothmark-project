@@ -1,5 +1,6 @@
 import { ClothMarkInfo } from './model/cloth-mark-info'
 import { ClothMarkViewModel } from '../../models/cloth/cloth-mark-view-model'
+import { ClothMarkRequest } from '../../models/cloth/cloth-mark-request';
 
 const CLOTH_MARK_LIST: ClothMarkInfo[] = [];
 
@@ -34,11 +35,11 @@ export class ClothData {
         }
     }
 
-    async postClothMarkInfo(expressRequest: any, clothMarkInfo: ClothMarkInfo): Promise<ClothMarkInfo> {
-        const clothMarkViewModel = new ClothMarkViewModel(clothMarkInfo);
+    async postClothMarkInfo(expressRequest: any, clothMarkRequest: ClothMarkRequest): Promise<ClothMarkInfo> {
+        const clothMarkViewModel = new ClothMarkViewModel(clothMarkRequest, CLOTH_MARK_LIST.length);
 
         // 이미 들어있는 url은 ? 
-        if (!await checkIsExists(clothMarkInfo)) {
+        if (!await checkIsExists(clothMarkViewModel)) {
             CLOTH_MARK_LIST.push(clothMarkViewModel);
             return clothMarkViewModel
         }

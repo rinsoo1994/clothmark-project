@@ -1,5 +1,7 @@
-import { ClothMarkInfo } from '../../data/cloth/model/cloth-mark-info'
-
-export class ClothMarkRequest extends ClothMarkInfo {
-
+export class ClothMarkRequest {
+    clothUrl: string;
+    title: string;
+    description: string;
+    clothPriority: number;
+    user: string;
 }

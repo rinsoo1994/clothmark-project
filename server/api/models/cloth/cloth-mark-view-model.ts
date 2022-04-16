@@ -1,14 +1,16 @@
-import { ClothMarkInfo } from '../../data/cloth/model/cloth-mark-info'
+import { ClothMarkRequest } from './cloth-mark-request'
 export class ClothMarkViewModel {
 
-    constructor(clothMarkInfo: ClothMarkInfo) {
-        this.clothPriority = clothMarkInfo.clothPriority;
-        this.clothUrl = clothMarkInfo.clothUrl;
-        this.description = clothMarkInfo.description;
-        this.title = clothMarkInfo.title;
-        this.user = clothMarkInfo.user;
+    constructor(clothMarkRequest: ClothMarkRequest, id: number) {
+        this.id = id;
+        this.clothPriority = clothMarkRequest.clothPriority;
+        this.clothUrl = clothMarkRequest.clothUrl;
+        this.description = clothMarkRequest.description;
+        this.title = clothMarkRequest.title;
+        this.user = clothMarkRequest.user;
     }
 
+    id: number;
     clothPriority: number;
     clothUrl: string;
     description: string;

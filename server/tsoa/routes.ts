@@ -12,6 +12,7 @@ const models: TsoaRoute.Models = {
     "ClothMarkViewModel": {
         "dataType": "refObject",
         "properties": {
+            "id": {"dataType":"double","required":true},
             "clothPriority": {"dataType":"double","required":true},
             "clothUrl": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
@@ -31,9 +32,10 @@ const models: TsoaRoute.Models = {
         "additionalProperties": true,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ClothMarkRequest": {
+    "ClothMarkInfo": {
         "dataType": "refObject",
         "properties": {
+            "id": {"dataType":"double","required":true},
             "clothUrl": {"dataType":"string","required":true},
             "title": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
@@ -43,12 +45,24 @@ const models: TsoaRoute.Models = {
         "additionalProperties": true,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ShoppingSuccessResponse_ClothMarkRequest_": {
+    "ShoppingSuccessResponse_ClothMarkInfo_": {
         "dataType": "refObject",
         "properties": {
-            "data": {"ref":"ClothMarkRequest","required":true},
+            "data": {"ref":"ClothMarkInfo","required":true},
             "resultCode": {"dataType":"double","required":true},
             "message": {"dataType":"string","required":true},
+        },
+        "additionalProperties": true,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ClothMarkRequest": {
+        "dataType": "refObject",
+        "properties": {
+            "clothUrl": {"dataType":"string","required":true},
+            "title": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "clothPriority": {"dataType":"double","required":true},
+            "user": {"dataType":"string","required":true},
         },
         "additionalProperties": true,
     },
@@ -105,6 +119,29 @@ export function RegisterRoutes(app: express.Router) {
 
 
               const promise = controller.postClothMarkInfo.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/cloth/info',
+
+            function ClothMarkController_deleteClothMarkInfo(request: any, response: any, next: any) {
+            const args = {
+                    request: {"in":"request","name":"request","required":true,"dataType":"object"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new ClothMarkController();
+
+
+              const promise = controller.deleteClothMarkInfo.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);
