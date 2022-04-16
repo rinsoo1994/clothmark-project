@@ -21,6 +21,14 @@ export class ClothService {
         const result = await clothData.postClothMarkInfo(expressRequest, clothMarkRequest);
         return result
     }
+
+    async deleteClothMarkInfo(
+        expressRequest: express.Request,
+        id: number
+    ): Promise<ClothMarkInfo> {
+        const result = await clothData.deleteClothMarkInfo(expressRequest, id);
+        return result
+    }
 }
 
 export const clothService = new ClothService();

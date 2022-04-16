@@ -1,4 +1,4 @@
-import { Get, Post, Body, Request, Route, Tags, Query, Delete } from 'tsoa';
+import { Get, Post, Body, Request, Route, Tags, Query, Delete, Path } from 'tsoa';
 import { BaseController } from '../base-controller';
 import express from 'express';
 import { ClothMarkViewModel } from '../../models/cloth/cloth-mark-view-model';
@@ -26,15 +26,19 @@ export class ClothMarkController extends BaseController {
         @Body() requestBody: ClothMarkRequest,
         @Request() request: express.Request
     ): Promise<ShoppingSuccessResponse<ClothMarkInfo>> {
-        console.log(requestBody);
         const data = await clothService.postClothMarkInfo(request, requestBody);
         const shoppingSuccessResponse = new ShoppingSuccessResponse(data);
         return shoppingSuccessResponse;
     }
 
-    @Delete('info')
-    async deleteClothMarkInfo(@Request() request: express.Request) {
-
+    @Delete('info/{id}')
+    async deleteClothMarkInfo(
+        @Request() request: express.Request,
+        @Path() id: number,
+    ): Promise<ShoppingSuccessResponse<ClothMarkInfo>> {
+        const data = await clothService.deleteClothMarkInfo(request, id);
+        const shoppingSuccessResponse = new ShoppingSuccessResponse(data);
+        return shoppingSuccessResponse;
     }
 }
 
