@@ -4,7 +4,8 @@
   "description": "``` npm install npx ts-node make-project.ts npx tsoa routes -c tsoa.json",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:dev": "npx tsoa routes -c tsoa.json && nodemon server/index.ts"
   },
   "repository": {
     "type": "git",

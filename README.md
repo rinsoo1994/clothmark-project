@@ -7,4 +7,8 @@ npx tsoa routes -c tsoa.json
 
 #Run server
 nodemon server/index.ts
+
+or 
+
+npm run compile:dev
 ```
