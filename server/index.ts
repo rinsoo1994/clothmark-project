@@ -39,7 +39,6 @@ app.use(bodyParser.urlencoded({
 );
 
 app.use(bodyParser.json())
-
 RegisterRoutes(app);
 
 const port: string | number = process.env.PORT || 3000;

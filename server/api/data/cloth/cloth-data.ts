@@ -55,6 +55,14 @@ export class ClothData {
         delete CLOTH_MARK_LIST[id];
         return clothMarkINFO;
     }
+
+    async putClothMarkInfo(expressRequest: any, id: number, clothMarkRequest: ClothMarkRequest) {
+        const clothMarkViewModel = new ClothMarkViewModel(clothMarkRequest, id);
+        CLOTH_MARK_LIST[id] = clothMarkViewModel;
+        // const clothMarkINFO: ClothMarkInfo = CLOTH_MARK_LIST[id];
+        // delete CLOTH_MARK_LIST[id];
+        return clothMarkViewModel;
+    }
 }
 
 export const clothData = new ClothData();
